@@ -1,6 +1,9 @@
 {
     "name": "wareon/rakuten-rms",
     "description": "Rakuten rms api for Laravel.",
+    "type": "library",
+    "keywords": ["laravel", "extension"],
+    "homepage": "https://github.com/wareon/rakuten-rms",
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +13,19 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.5"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Wareon\\RakutenRms\\": "packages/wareon/rakuten-rms/src/"
+            "Wareon\\RakutenRms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wareon\\RakutenRms\\RakutenRmsServiceProvider"
+            ]
         }
     }
 }
