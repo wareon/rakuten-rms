@@ -1,0 +1,22 @@
+{
+    "name": "wareon/rakuten-rms",
+    "description": "Rakuten rms api for Laravel.",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wareon",
+            "email": "wareon@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Wareon\\RakutenRms\\": "packages/wareon/rakuten-rms/src/"
+        }
+    }
+}
