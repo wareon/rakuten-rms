@@ -9,6 +9,11 @@
 
 namespace Wareon\RakutenRms\Facades;
 use Illuminate\Support\Facades\Facade;
+
+/**
+ * @method static getItem(string $itemUrl)
+ */
+
 class RakutenRms extends Facade
 {
     protected static function getFacadeAccessor()
