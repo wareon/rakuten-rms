@@ -17,6 +17,11 @@ class RakutenRms
     public $licenseKey ="";
     public $logFile = '';//output log file
 
+    public $proxy = false;
+    public $curloptProxy = '';
+    public $curloptProxyPort = '';
+    public $curloptProxyUserpwd = '';
+
     /**
      * @var Repository
      */
@@ -31,6 +36,10 @@ class RakutenRms
         $this->serviceSecret = $this->config['service_secret'];
         $this->licenseKey = $this->config['license_key'];
         $this->logFile = $this->config['log_file'];
+        $this->proxy = $this->config['proxy'];
+        $this->curloptProxy = $this->config['curlopt_proxy'];
+        $this->curloptProxyPort = $this->config['curlopt_proxy_port'];
+        $this->curloptProxyUserpwd = $this->config['curlopt_proxy_userpwd'];
     }
 
     public function getItem($itemUrl) {
@@ -62,6 +71,13 @@ class RakutenRms
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch,CURLOPT_HTTPHEADER,$headerArray);
+
+        if($this->proxy){
+            curl_setopt($ch, CURLOPT_PROXY, $this->curloptProxy);
+            curl_setopt($ch, CURLOPT_PROXYPORT, $this->curloptProxyPort);
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->curloptProxyUserpwd);
+        }
+
         $output = curl_exec($ch);
         curl_close($ch);
         if(!empty($this->logFile)) $this->log($output, $this->logFile);

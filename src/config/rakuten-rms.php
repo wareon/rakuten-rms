@@ -16,5 +16,10 @@ return [
     'settlement_auth' => env('RMS_SETTLEMENT_AUTH', ''),
     'test_mail_address' => env('RMS_TEST_MAIL_ADDRESS', ''),
 
-    'log_file' => 'output.log'
+    'log_file' => 'output.log',
+
+    'proxy' => false,
+    'curlopt_proxy' => '',
+    'curlopt_proxy_port' => '',
+    'curlopt_proxy_userpwd' => '',
 ];
