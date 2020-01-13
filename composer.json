@@ -16,6 +16,9 @@
         "php": ">=7.0.0",
         "encore/laravel-admin": "~1.5"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
     "autoload": {
         "psr-4": {
             "Wareon\\RakutenRms\\": "src/"
