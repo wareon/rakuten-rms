@@ -44,7 +44,8 @@ class RakutenRms
 
     public function getItem($itemUrl) {
         $params['itemUrl'] = $itemUrl;
-        return $this->curl(ApiDefine::RMS_API_ITEM_GET, false, $params);
+        $ret = $this->curl(ApiDefine::RMS_API_ITEM_GET, false, $params);
+        return $this->xml2arr($ret);
     }
 
     public function xml2arr($xmlStr){

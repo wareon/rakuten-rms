@@ -1,6 +1,6 @@
 <?php
 /**
- * describe
+ * phpunit test item api
  *
  * @author wareon <wareon@qq.com>
  * @date 2020/1/13 10:00
@@ -8,15 +8,18 @@
  */
 namespace Wareon\RakutenRms\Tests;
 
-use Wareon\RakutenRms\Facades\RakutenRms;
-use PHPUnit\Framework\TestCase;
+use Wareon\RakutenRms\RakutenRms;
+use Illuminate\Config\Repository;
 
 class ItemTest extends TestCase
 {
     public function testGetItem()
     {
-        $msg = RakutenRms::getItem('123456');
-        echo $msg;
+        $config = config();
+        print_r($config->get('rakuten-rms'));
+        $RakutenRms = new RakutenRms($config);
+        $msg = $RakutenRms->getItem('123456');
+        print_r($msg);
         $this->assertEquals(true, true);
     }
 }
