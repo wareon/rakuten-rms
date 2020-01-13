@@ -13,13 +13,36 @@ use Illuminate\Config\Repository;
 
 class ItemTest extends TestCase
 {
-    public function testGetItem()
+    public $api = null;
+
+    public function init()
     {
         $config = config();
-        print_r($config->get('rakuten-rms'));
-        $RakutenRms = new RakutenRms($config);
-        $msg = $RakutenRms->getItem('123456');
-        print_r($msg);
+        $this->api = new RakutenRms($config);
+    }
+
+    public function testGetItem()
+    {
+        $this->init();
+        $msg = $this->api->getItem('abc');
+        //echo $msg;
+        $msg = $this->api->strToUtf8($msg);
+        $data = $this->api->xml2arr($msg);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    public function testItemSearch()
+    {
+        $this->init();
+        $params = [
+            'itemName' => 'abc'
+        ];
+        $msg = $this->api->itemSearch($params);
+        //echo $msg;
+        $msg = $this->api->strToUtf8($msg);
+        $data = $this->api->xml2arr($msg);
+        print_r($data);
         $this->assertEquals(true, true);
     }
 }

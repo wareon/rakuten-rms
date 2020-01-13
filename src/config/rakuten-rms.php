@@ -8,6 +8,7 @@
  */
 
 return [
+    'replace_api' => env('REPLACE_API', ''),
     'service_secret' => env('RMS_SERVICE_SECRET', ''),
     'license_key' => env('RMS_LICENSE_KEY', ''),
 
