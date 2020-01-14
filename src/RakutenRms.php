@@ -10,11 +10,13 @@
 namespace Wareon\RakutenRms;
 
 use Illuminate\Config\Repository;
-use Wareon\RakutenRms\Models\Item;
+use Wareon\RakutenRms\Func\Categroy as FuncCategroy;
+use Wareon\RakutenRms\Func\Item as FuncItem;
 
 class RakutenRms
 {
-    use \Wareon\RakutenRms\Func\Item;
+    use FuncItem;
+    use FuncCategroy;
 
     public $replaceApi = '';
 

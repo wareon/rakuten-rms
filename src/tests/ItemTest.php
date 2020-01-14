@@ -15,33 +15,58 @@ class ItemTest extends TestCase
 {
     public $api = null;
 
-    public function init()
+    protected function setUp() : void
     {
+        parent::setUp();
         $config = config();
         $this->api = new RakutenRms($config);
     }
 
-    public function testGetItem()
+    /**
+     * test get categroy list
+     * @group categroy
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:23
+     * @since v1.0
+     */
+    public function testCategroyGet()
     {
-        $this->init();
-        $msg = $this->api->getItem('abc');
-        //echo $msg;
-        $msg = $this->api->strToUtf8($msg);
-        $data = $this->api->xml2arr($msg);
+        $data = $this->api->categroiesGet();
         print_r($data);
         $this->assertEquals(true, true);
     }
 
+    /**
+     * test Get Item detail
+     * @group item
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:25
+     * @since v1.0
+     */
+    public function testGetItem()
+    {
+        $data = $this->api->getItem('a001004018');
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    /**
+     * test Item Search
+     * @group item
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:25
+     * @since v1.0
+     */
     public function testItemSearch()
     {
-        $this->init();
         $params = [
-            'itemName' => 'abc'
+            //'itemName' => 'abc',
+            //'catchcopy' => '',
+            //'catalogId' => '0000000108',
+            //'itemUrl' => 'a001004018',
+            'genreId' => '502835'
         ];
-        $msg = $this->api->itemSearch($params);
-        //echo $msg;
-        $msg = $this->api->strToUtf8($msg);
-        $data = $this->api->xml2arr($msg);
+        $data = $this->api->itemSearch($params);
         print_r($data);
         $this->assertEquals(true, true);
     }

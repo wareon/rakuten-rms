@@ -15,6 +15,7 @@ class ApiDefine
     const RMS_API_ITEM_INSERT = '/es/1.0/item/insert';
     const RMS_API_ITEM_UPDATE = '/es/1.0/item/update';
     const RMS_API_ITEM_GET = '/es/1.0/item/get';
+
     const RMS_API_CABINET_USAGE_GET = '/es/1.0/cabinet/usage/get';
     const RMS_API_CABINET_FOLDERS_GET = '/es/1.0/cabinet/folders/get';
     const RMS_API_CABINET_FOLDERS_INSERT = '/es/1.0/cabinet/folder/insert';
@@ -27,6 +28,7 @@ class ApiDefine
     const RMS_API_INVENTORY_SOAP_ADDRESS = '/es/1.0/inventory/ws';
     const RMS_API_INVENTORY_SOAP_WSDL = 'https://inventoryapi.rms.rakuten.co.jp/rms/mall/inventoryapi';
     const RMS_API_PAYMENT_SOAP_WSDL = 'https://orderapi.rms.rakuten.co.jp/rccsapi-services/RCCSApiService?wsdl';
+
     const RMS_API_CATEGORY_SETS_GET = '/es/1.0/categoryapi/shop/categorysets/get';
     const RMS_API_CATEGORIES_GET = '/es/1.0/categoryapi/shop/categories/get';
     const RMS_API_CATEGORY_GET = '/es/1.0/categoryapi/shop/category/get';

@@ -9,7 +9,6 @@
 
 namespace Wareon\RakutenRms\Func;
 
-use Illuminate\Contracts\Console\Kernel;
 use Wareon\RakutenRms\ApiDefine;
 
 trait Item
@@ -18,7 +17,9 @@ trait Item
     {
         $url = $this->dealUrl(ApiDefine::RMS_API_ITEM_SEARCH);
         $ret = $this->curl($url, false, $params);
-        return $ret;
+        $msg = $this->strToUtf8($ret);
+        $data = $this->xml2arr($msg);
+        return $data;
     }
 
     public function getItem($itemUrl)
@@ -26,6 +27,8 @@ trait Item
         $params['itemUrl'] = $itemUrl;
         $url = $this->dealUrl(ApiDefine::RMS_API_ITEM_GET);
         $ret = $this->curl($url, false, $params);
-        return $ret;
+        $msg = $this->strToUtf8($ret);
+        $data = $this->xml2arr($msg);
+        return $data;
     }
 }
