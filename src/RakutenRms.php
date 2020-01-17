@@ -51,10 +51,35 @@ class RakutenRms
         $this->curloptProxyUserpwd = $this->config['curlopt_proxy_userpwd'];
     }
 
+    public function getReplaceUrl($url)
+    {
+        $replaceUrls = [
+            'https://api.rms.rakuten.co.jp',
+            'https://image.rakuten.co.jp',
+            'https://inventoryapi.rms.rakuten.co.jp',
+            'https://orderapi.rms.rakuten.co.jp',
+            'http://thumbnail.image.rakuten.co.jp'
+        ];
+        $query['uri'] = '';
+        $query['url'] = 0;
+        foreach ($replaceUrls as $i => $replaceUrl) {
+            if (strpos($url, $replaceUrl) === 0) {
+                $query['uri'] = substr($url, strlen($replaceUrl));
+                $query['url'] = $i;
+                break;
+            }
+        }
+
+        $newUrl = $this->replaceApi . '?' . http_build_query($query);
+        return $newUrl;
+    }
+
     public function dealUrl($uri)
     {
+        $query['uri'] = urlencode($uri);
+        //$query['debug'] = 1;
         if (!empty($this->replaceApi)) {
-            return $this->replaceApi . urlencode($uri);
+            return $this->replaceApi . '?' . http_build_query($query);
         } else {
             return ApiDefine::HOST . $uri;
         }
@@ -98,7 +123,11 @@ class RakutenRms
         $headerArray[] = 'Authorization:' . $this->authHeader();
         $ch = curl_init();
         if ($post === false && !empty($params)) {
-            $url .= '?' . http_build_query($params);
+            if (strpos($url, '?') === false) {
+                $url .= '?' . http_build_query($params);
+            }else{
+                $url .= '&' . http_build_query($params);
+            }
         }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, $post);

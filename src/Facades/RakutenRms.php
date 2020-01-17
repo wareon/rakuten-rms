@@ -11,7 +11,13 @@ namespace Wareon\RakutenRms\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static categroiesGet()
+ * @method static categroyGet()
+ *
+ * @method static itemSearch(array $params)
  * @method static getItem(string $itemUrl)
+ *
+ * @method static getReplaceUrl(string $url)
  */
 
 class RakutenRms extends Facade
