@@ -11,7 +11,7 @@ namespace Wareon\RakutenRms\Tests;
 use Wareon\RakutenRms\RakutenRms;
 use Illuminate\Config\Repository;
 
-class ItemTest extends TestCase
+class CategroyTest extends TestCase
 {
     public $api = null;
 
@@ -23,37 +23,45 @@ class ItemTest extends TestCase
     }
 
     /**
-     * test Get Item detail
-     * @group item1
+     * test get categroies list
+     * @group categroy1
      * @author wareon <wareon@qq.com>
-     * @date 2020/1/14 9:25
+     * @date 2020/1/14 9:23
      * @since v1.0
      */
-    public function testGetItem()
+    public function testCategroiesGet()
     {
-        $data = $this->api->getItem('a001004018');
+        $data = $this->api->categroiesGet();
         print_r($data);
         $this->assertEquals(true, true);
     }
 
     /**
-     * test Item Search
-     * @group item
+     * test get categroy list
+     * @group categroy2
      * @author wareon <wareon@qq.com>
-     * @date 2020/1/14 9:25
+     * @date 2020/1/14 9:23
      * @since v1.0
      */
-    public function testItemSearch()
+    public function testCategroyGet()
     {
-        $params = [
-            //'itemName' => 'abc',
-            //'catchcopy' => '',
-            'catalogId' => '109',
-            //'itemUrl' => 'a001004018',
-            //'genreId' => '502835'
-        ];
-        $data = $this->api->itemSearch($params);
+        $data = $this->api->categroyGet();
         print_r($data);
         $this->assertEquals(true, true);
     }
+
+    /**
+     * test get categroy list
+     * @group categroy
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:23
+     * @since v1.0
+     */
+    public function testCategorySetsGet()
+    {
+        $data = $this->api->categorySetsGet();
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
 }

@@ -12,11 +12,13 @@ namespace Wareon\RakutenRms;
 use Illuminate\Config\Repository;
 use Wareon\RakutenRms\Func\Categroy as FuncCategroy;
 use Wareon\RakutenRms\Func\Item as FuncItem;
+use Wareon\RakutenRms\Func\Order as FuncOrder;
 
 class RakutenRms
 {
     use FuncItem;
     use FuncCategroy;
+    use FuncOrder;
 
     public $replaceApi = '';
 
@@ -58,7 +60,8 @@ class RakutenRms
             'https://image.rakuten.co.jp',
             'https://inventoryapi.rms.rakuten.co.jp',
             'https://orderapi.rms.rakuten.co.jp',
-            'http://thumbnail.image.rakuten.co.jp'
+            'http://thumbnail.image.rakuten.co.jp',
+            'https://item.rakuten.co.jp'
         ];
         $query['uri'] = '';
         $query['url'] = 0;

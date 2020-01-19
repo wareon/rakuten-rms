@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static getItem(string $itemUrl)
  *
  * @method static getReplaceUrl(string $url)
+ *
+ * @method static searchOrder(array $params)
  */
 
 class RakutenRms extends Facade
