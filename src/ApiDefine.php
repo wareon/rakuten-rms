@@ -57,6 +57,10 @@ class ApiDefine
 
     // 受注関連設定
     const RMS_GET_ORDER_DATE_TYPE_ORDER = 1; // 注文日で取得
+
+    // Request Type
+    const REQUEST_XML = 1;
+    const REQUEST_JSON = 2;
 }
 
 

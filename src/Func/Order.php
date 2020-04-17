@@ -15,20 +15,18 @@ trait Order
     public function getOrder($params)
     {
         $url = $this->dealUrl(ApiDefine::RMS_API_RAKUTEN_PAY_GET_ORDER);
-        $ret = $this->curl($url, true, $params);
+        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
         $msg = $this->strToUtf8($ret);
         $data = json_decode($msg, true);
-        //$data = $this->xml2arr($msg);
         return $data;
     }
 
     public function searchOrder($params)
     {
         $url = $this->dealUrl(ApiDefine::RMS_API_RAKUTEN_PAY_SEARCH_ORDER);
-        $ret = $this->curl($url, true, $params);
+        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
         $msg = $this->strToUtf8($ret);
         $data = json_decode($msg, true);
-        //$data = $this->xml2arr($msg);
         return $data;
     }
 }

@@ -80,7 +80,6 @@ class RakutenRms
     public function dealUrl($uri)
     {
         $query['uri'] = urlencode($uri);
-        //$query['debug'] = 1;
         if (!empty($this->replaceApi)) {
             return $this->replaceApi . '?' . http_build_query($query);
         } else {
@@ -116,20 +115,38 @@ class RakutenRms
         return $cryptStr;
     }
 
-    public function curl($url, $post = false, $params = [])
+    public function curl($url, $post = false, $params = [], $type = ApiDefine::REQUEST_XML)
     {
-        $headerArray = array(
-            "Content-type: text/xml; charset=utf-8",
-            "Accept:application/xml",
-            "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
-        );
+        if ($type == ApiDefine::REQUEST_XML) {
+            $headerArray = array(
+                "Content-type: text/xml; charset=utf-8",
+                "Accept: application/xml"
+            );
+        } else {
+            $headerArray = array(
+                "Content-type: application/json; charset=utf-8",
+                "Accept: application/json"
+            );
+        }
+
+        $headerArray[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36";
         $headerArray[] = 'Authorization:' . $this->authHeader();
         $ch = curl_init();
-        if ($post === false && !empty($params)) {
-            if (strpos($url, '?') === false) {
-                $url .= '?' . http_build_query($params);
-            }else{
-                $url .= '&' . http_build_query($params);
+        if ($post === false) {
+            if (!empty($params)) {
+                if (strpos($url, '?') === false) {
+                    $url .= '?' . http_build_query($params);
+                } else {
+                    $url .= '&' . http_build_query($params);
+                }
+            }
+        } else {
+            if ($type == ApiDefine::REQUEST_JSON && !empty($params)) {
+                $fields = json_encode($params, JSON_UNESCAPED_UNICODE);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+            } else if ($type == ApiDefine::REQUEST_XML && !empty($params)) {
+                $fields = http_build_query($params);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
             }
         }
         curl_setopt($ch, CURLOPT_URL, $url);
