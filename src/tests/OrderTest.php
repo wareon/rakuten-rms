@@ -23,30 +23,37 @@ class OrderTest extends TestCase
         $this->api = new RakutenRms($config);
     }
 
-    public function testGetOrder()
-    {
-        $params['shopUrl'] = 'https://www.rakuten.ne.jp/gold/xxx/';
-        $data = $this->api->getOrder($params);
-        print_r($data);
-        $this->assertEquals(true, true);
-    }
-
     /**
      * test search order
-     * @group order
+     * @group searchOrder
      * @author wareon <wareon@qq.com>
      * @date 2020/1/14 9:23
      * @since v1.0
      */
     public function testSearchOrder()
     {
-        $startDate = '2020-01-10';
-        $endDate = '2020-01-19';
+        $startDate = date('Y-m-d') . 'T00:00:00+0900';
+        $endDate = date('Y-m-d') . 'T23:59:59+0900';
         $params['dateType'] = 1;
-        $params['startDatetime'] = Carbon::parse($startDate)->format('Y-m-dTH:i:s+09:00');
-        $params['endDatetime'] = Carbon::parse($endDate)->format('Y-m-dTH:i:s+09:00');
+        $params['startDatetime'] = $startDate;
+        $params['endDatetime'] = $endDate;
         $data = $this->api->searchOrder($params);
         print_r($data);
         $this->assertEquals(true, true);
     }
+
+    /**
+     * @group getOrder
+     */
+    public function testGetOrder()
+    {
+        $params['orderNumberList'] = ['x-x-x'];
+        $params['version'] = 1;
+        $data = $this->api->getOrder($params);
+        print_r($data);
+        if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'][0], JSON_UNESCAPED_UNICODE);
+        $this->assertEquals(true, true);
+    }
+
+
 }
