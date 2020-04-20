@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static itemSearch(array $params)
  * @method static getItem(string $itemUrl)
+ * @method static itemInsert(array $itemData)
  *
  * @method static getReplaceUrl(string $url)
  *
  * @method static searchOrder(array $params)
+ * @method static getOrder(array $params)
  */
 
 class RakutenRms extends Facade

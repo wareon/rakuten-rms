@@ -94,6 +94,34 @@ class RakutenRms
         return json_decode($jsonStr, true);
     }
 
+    public function arr2xml($arr)
+    {
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= $this->arrToXml($arr);
+        return $xml;
+    }
+
+    private function arrToXml($arr)
+    {
+        $xml = '';
+        foreach ($arr as $key => $val) {
+            if(!is_numeric($key)){
+                if (is_array($val)) {
+                    $xml .= '<' . $key . '>' . $this->arrToXml($val) . '</' . $key . '>';
+                } else {
+                    $xml .= '<' . $key . '>' . htmlspecialchars($val) . '</' . $key . '>';
+                }
+            }else {
+                if (is_array($val)) {
+                    $xml .= $this->arrToXml($val);
+                } else {
+                    $xml .= htmlspecialchars($val);
+                }
+            }
+        }
+        return $xml;
+    }
+
     public function strToUtf8($str)
     {
         $encode = mb_detect_encoding($str, array("ASCII", 'UTF-8', "GB2312", "GBK", 'BIG5', 'EUC-JP'));
@@ -145,7 +173,8 @@ class RakutenRms
                 $fields = json_encode($params, JSON_UNESCAPED_UNICODE);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
             } else if ($type == ApiDefine::REQUEST_XML && !empty($params)) {
-                $fields = http_build_query($params);
+                if (is_array($params)) $fields = http_build_query($params);
+                else if (is_string($params)) $fields = $params;
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
             }
         }
