@@ -46,6 +46,15 @@ class ApiDefine
     const RMS_API_RAKUTEN_PAY_GET_PAYMENT = '/es/2.0/order/getPayment/';
     const RMS_API_RAKUTEN_PAY_CANCEL_ORDER = '/es/2.0/order/cancelOrder/';
     const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING = '/es/2.0/order/updateOrderShipping/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING_ASYNC = '/es/2.0/order/updateOrderShippingAsync/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_GET_RESULT_UPDATE_ORDER_SHIPPING_ASYNC = '/es/2.0/order/getResultUpdateOrderShippingAsync/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_GET_SUB_STATUS_LIST = '/es/2.0/order/getSubStatusList/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SUB_STATUS = '/es/2.0/order/updateOrderSubStatus/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_MEMO = '/es/2.0/order/updateOrderMemo/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_REMARKS = '/es/2.0/order/updateOrderRemarks/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SENDER_AFTER_SHIPPING = '/es/2.0/order/updateOrderSenderAfterShipping/';
+    const RMS_API_RAKUTEN_PAY_CANCEL_ORDER_AFTER_SHIPPING = '/es/2.0/order/cancelOrderAfterShipping/';
+    const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_ORDERER = '/es/2.0/order/updateOrderOrderer/';
 
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;
