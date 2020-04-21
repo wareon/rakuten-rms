@@ -105,13 +105,13 @@ class RakutenRms
     {
         $xml = '';
         foreach ($arr as $key => $val) {
-            if(!is_numeric($key)){
+            if (!is_numeric($key)) {
                 if (is_array($val)) {
                     $xml .= '<' . $key . '>' . $this->arrToXml($val) . '</' . $key . '>';
                 } else {
                     $xml .= '<' . $key . '>' . htmlspecialchars($val) . '</' . $key . '>';
                 }
-            }else {
+            } else {
                 if (is_array($val)) {
                     $xml .= $this->arrToXml($val);
                 } else {
@@ -141,6 +141,34 @@ class RakutenRms
     {
         $cryptStr = 'ESA ' . base64_encode($this->serviceSecret . ':' . $this->licenseKey);
         return $cryptStr;
+    }
+
+    private function queryCurl($url, $params)
+    {
+        $url = $this->dealUrl($url);
+        $ret = $this->curl($url, false, $params);
+        $msg = $this->strToUtf8($ret);
+        $data = $this->xml2arr($msg);
+        return $data;
+    }
+
+    private function xmlCurl($url, $arr)
+    {
+        $xml = $this->arr2xml($arr);
+        $url = $this->dealUrl($url);
+        $ret = $this->curl($url, true, $xml, ApiDefine::REQUEST_XML);
+        $msg = $this->strToUtf8($ret);
+        $data = $this->xml2arr($msg);
+        return $data;
+    }
+
+    private function jsonCurl($url,$params)
+    {
+        $url = $this->dealUrl($url);
+        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
+        $msg = $this->strToUtf8($ret);
+        $data = json_decode($msg, true);
+        return $data;
     }
 
     public function curl($url, $post = false, $params = [], $type = ApiDefine::REQUEST_XML)

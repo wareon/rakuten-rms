@@ -51,9 +51,32 @@ class OrderTest extends TestCase
         $params['version'] = 1;
         $data = $this->api->getOrder($params);
         print_r($data);
-        if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'][0], JSON_UNESCAPED_UNICODE);
+        if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'], JSON_UNESCAPED_UNICODE);
         $this->assertEquals(true, true);
     }
 
+    /**
+     * @group confirmOrder
+     */
+    public function testConfirmOrder()
+    {
+        $params['orderNumber'] = 'x-x-x';
+        $params['BasketidModelList'] = [
+            [
+                "basketId" => 10746403,
+                "ShippingModelList" => [
+                    [
+                        "shippingDetailId"=> null,
+                        "deliveryCompany"=> "1001",
+                        "shippingNumber"=> "SN333333",
+                        "shippingDate"=> "2018-02-01"
+                    ]
+                ]
+            ]
+        ];
+        $data = $this->api->confirmOrder($params);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
 
 }

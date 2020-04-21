@@ -14,19 +14,16 @@ trait Order
 {
     public function getOrder($params)
     {
-        $url = $this->dealUrl(ApiDefine::RMS_API_RAKUTEN_PAY_GET_ORDER);
-        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
-        $msg = $this->strToUtf8($ret);
-        $data = json_decode($msg, true);
-        return $data;
+        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_GET_ORDER, $params);
     }
 
     public function searchOrder($params)
     {
-        $url = $this->dealUrl(ApiDefine::RMS_API_RAKUTEN_PAY_SEARCH_ORDER);
-        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
-        $msg = $this->strToUtf8($ret);
-        $data = json_decode($msg, true);
-        return $data;
+        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_SEARCH_ORDER, $params);
+    }
+
+    public function confirmOrder($params)
+    {
+        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_CONFIRM_ORDER, $params);
     }
 }

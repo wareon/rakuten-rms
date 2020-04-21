@@ -39,7 +39,7 @@ class ItemTest extends TestCase
 
     /**
      * test Item Search
-     * @group item
+     * @group itemSearch
      * @author wareon <wareon@qq.com>
      * @date 2020/1/14 9:25
      * @since v1.0
@@ -59,7 +59,7 @@ class ItemTest extends TestCase
     }
 
     /**
-     * test Get Item detail
+     * test Get Item insert
      * @group itemInsert
      * @author wareon <wareon@qq.com>
      * @date 2020/1/14 9:25
@@ -200,6 +200,84 @@ class ItemTest extends TestCase
             )
         ));
         $data = $this->api->itemInsert($item);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    /**
+     * test Get Item update
+     * @group itemUpdate
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:25
+     * @since v1.0
+     */
+    public function testItemUpdate()
+    {
+        $item = array(
+            'request' => array(
+                'itemUpdateRequest' =>
+                    array(
+                        'item' => array(
+                            'itemUrl' => 'testsetstestettestte',
+                            'itemPrice' => 102,
+                            'images' =>
+                                array(
+                                    array('image' =>
+                                        array(
+                                            'imageUrl' => 'https://image.rakuten.co.jp/https://api.rms.rakuten.co.jp/es/1.0/item/insert/cabinet/images/rrrz_01.jpg',
+                                            'imageAlt' => '',
+                                        )),
+                                    array('image' =>
+                                        array(
+                                            'imageUrl' => 'https://image.rakuten.co.jp/https://api.rms.rakuten.co.jp/es/1.0/item/insert/cabinet/images/rrrz_01.jpg',
+                                            'imageAlt' => '',
+                                        )),
+                                ),
+                            'descriptionForPC' => '結構html使える_20200421110417',
+                            'descriptionForMobile' => '一部html使用可能_20200421110417',
+                            'descriptionForSmartPhone' => '一部html使用可能_20200421110417',
+                            'catchCopyForPC' => 'PC用キャッチコピー_20200421110417',
+                            'catchCopyForMobile' => 'モバイル用キャッチコピー_20200421110417',
+                            'isIncludedPostage' => 0,
+                            'isIncludedCashOnDeliveryPostage' => 1,
+                            'postage' => 125,
+                            'itemInventory' =>
+                                array(
+                                    'inventoryType' => 1,
+                                    'inventories' =>
+                                        array(
+                                            'inventory' =>
+                                                array(
+                                                    'inventoryCount' => 16,
+                                                    'normalDeliveryDateId' => 1000,
+                                                    'backorderDeliveryDateId' => 1000
+                                                ),
+                                        )
+                                ),
+                        )
+                    )));
+        $data = $this->api->itemUpdate($item);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    /**
+     * test Get Item delete
+     * @group itemDelete
+     * @author wareon <wareon@qq.com>
+     * @date 2020/1/14 9:25
+     * @since v1.0
+     */
+    public function testItemDelete()
+    {
+        $item = array(
+            'request' => array(
+                'itemDeleteRequest' =>
+                    array(
+                        'item' => array(
+                            'itemUrl' => 'testsetstestettestte',
+                        ))));
+        $data = $this->api->itemDelete($item);
         print_r($data);
         $this->assertEquals(true, true);
     }

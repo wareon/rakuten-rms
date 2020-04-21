@@ -14,28 +14,16 @@ trait Categroy
 {
     public function categorySetsGet()
     {
-        $url = $this->dealUrl(ApiDefine::RMS_API_CATEGORY_SETS_GET);
-        $ret = $this->curl($url, false);
-        $msg = $this->strToUtf8($ret);
-        $data = $this->xml2arr($msg);
-        return $data;
+        return $this->queryCurl(ApiDefine::RMS_API_CATEGORY_SETS_GET, []);
     }
 
     public function categroiesGet()
     {
-        $url = $this->dealUrl(ApiDefine::RMS_API_CATEGORIES_GET);
-        $ret = $this->curl($url, false);
-        $msg = $this->strToUtf8($ret);
-        $data = $this->xml2arr($msg);
-        return $data;
+        return $this->queryCurl(ApiDefine::RMS_API_CATEGORIES_GET, []);
     }
 
     public function categroyGet()
     {
-        $url = $this->dealUrl(ApiDefine::RMS_API_CATEGORY_GET);
-        $ret = $this->curl($url, false);
-        $msg = $this->strToUtf8($ret);
-        $data = $this->xml2arr($msg);
-        return $data;
+        return $this->queryCurl(ApiDefine::RMS_API_CATEGORY_GET, []);
     }
 }
