@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static categroiesGet()
  * @method static categroyGet()
+ * @method static categoryInsert($data)
+ * @method static categoryUpdate($data)
+ * @method static categoryDelete($data)
  *
  * @method static itemSearch(array $params)
  * @method static getItem(string $itemUrl)

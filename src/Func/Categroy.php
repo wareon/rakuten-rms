@@ -26,4 +26,24 @@ trait Categroy
     {
         return $this->queryCurl(ApiDefine::RMS_API_CATEGORY_GET, []);
     }
+
+    public function categoryInsert($data)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_CATEGORY_INSERT, $data);
+    }
+
+    public function categoryUpdate($data)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_CATEGORY_UPDATE, $data);
+    }
+
+    public function categoryDelete($data)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_CATEGORY_DELETE, $data);
+    }
+
+    public function categoryMove($data)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_CATEGORY_MOVE, $data);
+    }
 }

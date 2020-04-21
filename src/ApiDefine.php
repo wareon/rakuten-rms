@@ -36,6 +36,7 @@ class ApiDefine
     const RMS_API_CATEGORY_INSERT = '/es/1.0/categoryapi/shop/category/insert';
     const RMS_API_CATEGORY_UPDATE = '/es/1.0/categoryapi/shop/category/update';
     const RMS_API_CATEGORY_DELETE = '/es/1.0/categoryapi/shop/category/delete';
+    const RMS_API_CATEGORY_MOVE = '/es/1.0/categoryapi/shop/category/move';
 
     // 楽天ペイAPI エンドポイント
     const RMS_API_RAKUTEN_PAY_GET_ORDER = '/es/2.0/order/getOrder/';
