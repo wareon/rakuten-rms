@@ -34,9 +34,11 @@ class OrderTest extends TestCase
     {
         $startDate = date('Y-m-d') . 'T00:00:00+0900';
         $endDate = date('Y-m-d') . 'T23:59:59+0900';
+        $params['orderProgressList'] = [300];
         $params['dateType'] = 1;
         $params['startDatetime'] = $startDate;
         $params['endDatetime'] = $endDate;
+        //$params['settlementMethod'] = 1;
         $data = $this->api->searchOrder($params);
         print_r($data);
         $this->assertEquals(true, true);
@@ -50,7 +52,7 @@ class OrderTest extends TestCase
         $params['orderNumberList'] = ['x-x-x'];
         $params['version'] = 1;
         $data = $this->api->getOrder($params);
-        print_r($data);
+        //print_r($data);
         if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'], JSON_UNESCAPED_UNICODE);
         $this->assertEquals(true, true);
     }

@@ -16,6 +16,11 @@ class ApiDefine
     const RMS_API_ITEM_UPDATE = '/es/1.0/item/update';
     const RMS_API_ITEM_DELETE = '/es/1.0/item/delete';
     const RMS_API_ITEM_GET = '/es/1.0/item/get';
+    const RMS_API_ITEMS_UPDATE = '/es/1.0/items/update';
+
+    const RMS_API_PRODUCT_SEARCH = '/es/2.0/product/search';
+
+    const RMS_API_NAVIGATION_GENRE = '/es/1.0/navigation/genre/get';
 
     const RMS_API_CABINET_USAGE_GET = '/es/1.0/cabinet/usage/get';
     const RMS_API_CABINET_FOLDERS_GET = '/es/1.0/cabinet/folders/get';

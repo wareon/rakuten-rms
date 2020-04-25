@@ -23,4 +23,14 @@ return [
     'curlopt_proxy' => '',
     'curlopt_proxy_port' => '',
     'curlopt_proxy_userpwd' => '',
+    
+    'replace_urls' => [
+        'https://api.rms.rakuten.co.jp',
+        'https://image.rakuten.co.jp',
+        'https://inventoryapi.rms.rakuten.co.jp',
+        'https://orderapi.rms.rakuten.co.jp',
+        'http://thumbnail.image.rakuten.co.jp',
+        'https://item.rakuten.co.jp',
+        'https://www.rakuten.ne.jp'
+    ]
 ];

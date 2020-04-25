@@ -47,14 +47,16 @@ class ItemTest extends TestCase
     public function testItemSearch()
     {
         $params = [
-            //'itemName' => 'abc',
-            //'catchcopy' => '',
-            'catalogId' => '109',
-            //'itemUrl' => 'a001004018',
-            //'genreId' => '502835'
+            //'itemName' => '送料無料',
+            //'catchcopy' => '送料無料',
+            //'catalogId' => '1',
+            'itemUrl' => '',
+            //'genreId' => ''
         ];
         $data = $this->api->itemSearch($params);
-        print_r($data);
+        $items = $data['itemSearchResult']['items']['item'] ?? [];
+        if(isset($data['itemSearchResult']['numFound'])) echo $data['itemSearchResult']['numFound'];
+        //print_r($data);
         $this->assertEquals(true, true);
     }
 

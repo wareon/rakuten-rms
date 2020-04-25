@@ -12,11 +12,15 @@ namespace Wareon\RakutenRms;
 use Illuminate\Config\Repository;
 use Wareon\RakutenRms\Func\Categroy as FuncCategroy;
 use Wareon\RakutenRms\Func\Item as FuncItem;
+use Wareon\RakutenRms\Func\Product as FuncProduct;
+use Wareon\RakutenRms\Func\Navigation as FuncNavigation;
 use Wareon\RakutenRms\Func\Order as FuncOrder;
 
 class RakutenRms
 {
     use FuncItem;
+    use FuncProduct;
+    use FuncNavigation;
     use FuncCategroy;
     use FuncOrder;
 
@@ -30,6 +34,8 @@ class RakutenRms
     public $curloptProxy = '';
     public $curloptProxyPort = '';
     public $curloptProxyUserpwd = '';
+    
+    public $replaceUrls = [];
 
     /**
      * @var Repository
@@ -51,21 +57,14 @@ class RakutenRms
         $this->curloptProxy = $this->config['curlopt_proxy'];
         $this->curloptProxyPort = $this->config['curlopt_proxy_port'];
         $this->curloptProxyUserpwd = $this->config['curlopt_proxy_userpwd'];
+        $this->replaceUrls = $this->config['replace_urls'];
     }
 
     public function getReplaceUrl($url)
     {
-        $replaceUrls = [
-            'https://api.rms.rakuten.co.jp',
-            'https://image.rakuten.co.jp',
-            'https://inventoryapi.rms.rakuten.co.jp',
-            'https://orderapi.rms.rakuten.co.jp',
-            'http://thumbnail.image.rakuten.co.jp',
-            'https://item.rakuten.co.jp'
-        ];
         $query['uri'] = '';
         $query['url'] = 0;
-        foreach ($replaceUrls as $i => $replaceUrl) {
+        foreach ($this->replaceUrls as $i => $replaceUrl) {
             if (strpos($url, $replaceUrl) === 0) {
                 $query['uri'] = substr($url, strlen($replaceUrl));
                 $query['url'] = $i;

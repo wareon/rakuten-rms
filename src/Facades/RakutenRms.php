@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Facade;
  * @method static itemInsert(array $itemData)
  * @method static itemUpdate(array $itemData)
  * @method static itemDelete(array $itemData)
+ * @method static itemsUpdate(array $itemsData)
+ *
+ * @method static productSearch($params)
+ * @method static navigationGenreGet($params)
  *
  * @method static getReplaceUrl(string $url)
  *

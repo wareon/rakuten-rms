@@ -38,4 +38,9 @@ trait Item
     {
         return $this->xmlCurl(ApiDefine::RMS_API_ITEM_DELETE, $itemData);
     }
+
+    public function itemsUpdate($itemsData)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_ITEMS_UPDATE, $itemsData);
+    }
 }
