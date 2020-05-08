@@ -22,6 +22,13 @@ class ApiDefine
 
     const RMS_API_NAVIGATION_GENRE = '/es/1.0/navigation/genre/get';
 
+    const RMS_API_INQUIRIES_COUNT = '/es/1.0/inquirymng-api/inquiries/count';
+    const RMS_API_INQUIRIES_GET = '/es/1.0/inquirymng-api/inquiries';
+    const RMS_API_INQUIRY_GET = '/es/1.0/inquirymng-api/inquiry/';
+    const RMS_API_INQUIRY_REPLY = '/es/1.0/inquirymng-api/inquiry/reply';
+    const RMS_API_INQUIRY_ATTACHMENT = '/es/1.0/inquirymng-api/attachment';
+    const RMS_API_INQUIRY_ATTACHMENT_GET = '/es/1.0/inquirymng-api/attachment';
+
     const RMS_API_CABINET_USAGE_GET = '/es/1.0/cabinet/usage/get';
     const RMS_API_CABINET_FOLDERS_GET = '/es/1.0/cabinet/folders/get';
     const RMS_API_CABINET_FOLDERS_INSERT = '/es/1.0/cabinet/folder/insert';
@@ -77,6 +84,8 @@ class ApiDefine
     // Request Type
     const REQUEST_XML = 1;
     const REQUEST_JSON = 2;
+    const REQUEST_FILE = 3;
+    const REQUEST_ALL = 4;
 }
 
 

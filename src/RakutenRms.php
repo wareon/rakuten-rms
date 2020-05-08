@@ -15,6 +15,7 @@ use Wareon\RakutenRms\Func\Item as FuncItem;
 use Wareon\RakutenRms\Func\Product as FuncProduct;
 use Wareon\RakutenRms\Func\Navigation as FuncNavigation;
 use Wareon\RakutenRms\Func\Order as FuncOrder;
+use Wareon\RakutenRms\Func\InquiryManagement as FuncInquiryManagement;
 
 class RakutenRms
 {
@@ -23,6 +24,7 @@ class RakutenRms
     use FuncNavigation;
     use FuncCategroy;
     use FuncOrder;
+    use FuncInquiryManagement;
 
     public $replaceApi = '';
 
@@ -34,7 +36,7 @@ class RakutenRms
     public $curloptProxy = '';
     public $curloptProxyPort = '';
     public $curloptProxyUserpwd = '';
-    
+
     public $replaceUrls = [];
 
     /**
@@ -142,10 +144,10 @@ class RakutenRms
         return $cryptStr;
     }
 
-    private function queryCurl($url, $params)
+    private function queryCurl($url, $params, $isPost = false)
     {
         $url = $this->dealUrl($url);
-        $ret = $this->curl($url, false, $params);
+        $ret = $this->curl($url, $isPost, $params);
         $msg = $this->strToUtf8($ret);
         $data = $this->xml2arr($msg);
         return $data;
@@ -161,10 +163,10 @@ class RakutenRms
         return $data;
     }
 
-    private function jsonCurl($url,$params)
+    private function jsonCurl($url,$params, $isPost = true)
     {
         $url = $this->dealUrl($url);
-        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON);
+        $ret = $this->curl($url, $isPost, $params, ApiDefine::REQUEST_JSON);
         $msg = $this->strToUtf8($ret);
         $data = json_decode($msg, true);
         return $data;
@@ -177,15 +179,24 @@ class RakutenRms
                 "Content-type: text/xml; charset=utf-8",
                 "Accept: application/xml"
             );
-        } else {
+        } else if ($type == ApiDefine::REQUEST_JSON) {
             $headerArray = array(
                 "Content-type: application/json; charset=utf-8",
                 "Accept: application/json"
             );
+        } else if ($type == ApiDefine::REQUEST_FILE) {
+            $headerArray = array(
+                "Content-type: multipart/form-data;",
+                "Accept: application/json"
+            );
+        } else {
+            $headerArray = array(
+                "Accept: */*"
+            );
         }
 
         $headerArray[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36";
-        $headerArray[] = 'Authorization:' . $this->authHeader();
+        $headerArray[] = 'Authorization: ' . $this->authHeader();
         $ch = curl_init();
         if ($post === false) {
             if (!empty($params)) {
