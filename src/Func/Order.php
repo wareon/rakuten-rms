@@ -12,88 +12,124 @@ use Wareon\RakutenRms\ApiDefine;
 
 trait Order
 {
+    public $orderDebug = false;
+
     public function getOrder($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_GET_ORDER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_GET_ORDER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_GET_ORDER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function searchOrder($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_SEARCH_ORDER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_SEARCH_ORDER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_SEARCH_ORDER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function confirmOrder($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_CONFIRM_ORDER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_CONFIRM_ORDER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_CONFIRM_ORDER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderShipping($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SHIPPING;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderShippingAsync($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING_ASYNC, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SHIPPING_ASYNC;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SHIPPING_ASYNC;
+        return $this->jsonCurl($url, $params);
     }
 
     public function getResultUpdateOrderShippingAsync($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_GET_RESULT_UPDATE_ORDER_SHIPPING_ASYNC, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_GET_RESULT_UPDATE_ORDER_SHIPPING_ASYNC;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_GET_RESULT_UPDATE_ORDER_SHIPPING_ASYNC;
+        return $this->jsonCurl($url, $params);
     }
 
     public function getSubStatusList($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_GET_SUB_STATUS_LIST, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_GET_SUB_STATUS_LIST;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_GET_SUB_STATUS_LIST;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderSubStatus($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SUB_STATUS, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SUB_STATUS;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SUB_STATUS;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderMemo($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_MEMO, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_MEMO;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_MEMO;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderRemarks($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_REMARKS, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_REMARKS;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_REMARKS;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderSender($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SENDER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SENDER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SENDER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderSenderAfterShipping($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SENDER_AFTER_SHIPPING, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SENDER_AFTER_SHIPPING;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_SENDER_AFTER_SHIPPING;
+        return $this->jsonCurl($url, $params);
     }
 
     public function cancelOrder($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_CANCEL_ORDER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_CANCEL_ORDER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_CANCEL_ORDER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function cancelOrderAfterShipping($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_CANCEL_ORDER_AFTER_SHIPPING, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_CANCEL_ORDER_AFTER_SHIPPING;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_CANCEL_ORDER_AFTER_SHIPPING;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderOrderer($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_ORDERER, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_ORDERER;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_ORDERER;
+        return $this->jsonCurl($url, $params);
     }
 
     public function updateOrderDelivery($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_DELIVERY, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_DELIVERY;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_UPDATE_ORDER_DELIVERY;
+        return $this->jsonCurl($url, $params);
     }
 
     public function getPayment($params)
     {
-        return $this->jsonCurl(ApiDefine::RMS_API_RAKUTEN_PAY_GET_PAYMENT, $params);
+        if($this->orderDebug) $url = ApiDefine::RMS_API_RAKUTEN_PAY_SAMPLE_GET_PAYMENT;
+        else $url = ApiDefine::RMS_API_RAKUTEN_PAY_GET_PAYMENT;
+        return $this->jsonCurl($url, $params);
     }
 }

@@ -8,6 +8,7 @@
  */
 
 return [
+    'order_debug' => env('ORDER_DEBUG', false),
     'replace_api' => env('REPLACE_API', ''),
     'service_secret' => env('RMS_SERVICE_SECRET', ''),
     'license_key' => env('RMS_LICENSE_KEY', ''),
@@ -23,7 +24,7 @@ return [
     'curlopt_proxy' => '',
     'curlopt_proxy_port' => '',
     'curlopt_proxy_userpwd' => '',
-    
+
     'replace_urls' => [
         'https://api.rms.rakuten.co.jp',
         'https://image.rakuten.co.jp',

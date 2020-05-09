@@ -69,6 +69,25 @@ class ApiDefine
     const RMS_API_RAKUTEN_PAY_CANCEL_ORDER_AFTER_SHIPPING = '/es/2.0/order/cancelOrderAfterShipping/';
     const RMS_API_RAKUTEN_PAY_UPDATE_ORDER_ORDERER = '/es/2.0/order/updateOrderOrderer/';
 
+    // order sample api
+    const RMS_API_RAKUTEN_PAY_SAMPLE_SEARCH_ORDER = '/es/2.0/sample.order/searchOrder/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_GET_ORDER = '/es/2.0/sample.order/getOrder/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_CONFIRM_ORDER = '/es/2.0/sample.order/confirmOrder/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SHIPPING = '/es/2.0/sample.order/updateOrderShipping/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SHIPPING_ASYNC = '/es/2.0/sample.order/updateOrderShippingAsync/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_GET_RESULT_UPDATE_ORDER_SHIPPING_ASYNC = '/es/2.0/sample.order/getResultUpdateOrderShippingAsync/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_GET_SUB_STATUS_LIST = '/es/2.0/sample.order/getSubStatusList/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SUB_STATUS = '/es/2.0/sample.order/updateOrderSubStatus/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_MEMO = '/es/2.0/sample.order/updateOrderMemo/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_REMARKS = '/es/2.0/sample.order/updateOrderRemarks/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SENDER = '/es/2.0/sample.order/updateOrderSender/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_SENDER_AFTER_SHIPPING = '/es/2.0/sample.order/updateOrderSenderAfterShipping/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_CANCEL_ORDER = '/es/2.0/sample.order/cancelOrder/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_CANCEL_ORDER_AFTER_SHIPPING = '/es/2.0/sample.order/cancelOrderAfterShipping/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_ORDERER = '/es/2.0/sample.order/updateOrderOrderer/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_DELIVERY = '/es/2.0/sample.order/updateOrderDelivery/';
+    const RMS_API_RAKUTEN_PAY_SAMPLE_GET_PAYMENT = '/es/2.0/sample.order/getPayment/';
+
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;
 

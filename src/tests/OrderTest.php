@@ -34,7 +34,7 @@ class OrderTest extends TestCase
     {
         $startDate = date('Y-m-d') . 'T00:00:00+0900';
         $endDate = date('Y-m-d') . 'T23:59:59+0900';
-        $params['orderProgressList'] = [300];
+        $params['orderProgressList'] = [100,200,300,400,500,600];
         $params['dateType'] = 1;
         $params['startDatetime'] = $startDate;
         $params['endDatetime'] = $endDate;

@@ -60,6 +60,7 @@ class RakutenRms
         $this->curloptProxyPort = $this->config['curlopt_proxy_port'];
         $this->curloptProxyUserpwd = $this->config['curlopt_proxy_userpwd'];
         $this->replaceUrls = $this->config['replace_urls'];
+        $this->orderDebug = $this->config['order_debug'];
     }
 
     public function getReplaceUrl($url)
