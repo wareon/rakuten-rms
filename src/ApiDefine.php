@@ -105,6 +105,7 @@ class ApiDefine
     const REQUEST_JSON = 2;
     const REQUEST_FILE = 3;
     const REQUEST_ALL = 4;
+    const REQUEST_SOAP = 5;
 }
 
 

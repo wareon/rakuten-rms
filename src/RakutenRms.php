@@ -16,6 +16,7 @@ use Wareon\RakutenRms\Func\Product as FuncProduct;
 use Wareon\RakutenRms\Func\Navigation as FuncNavigation;
 use Wareon\RakutenRms\Func\Order as FuncOrder;
 use Wareon\RakutenRms\Func\InquiryManagement as FuncInquiryManagement;
+use Wareon\RakutenRms\Func\Inventory as FuncInventory;
 
 class RakutenRms
 {
@@ -25,11 +26,17 @@ class RakutenRms
     use FuncCategroy;
     use FuncOrder;
     use FuncInquiryManagement;
+    use FuncInventory;
 
     public $replaceApi = '';
 
     public $serviceSecret = "";
     public $licenseKey = "";
+    public $settlementUserName = "";
+    public $settlementShopUrl = "";
+    public $settlementAuth = "";
+    public $testMailAddress = "";
+
     public $logFile = '';//output log file
 
     public $proxy = false;
@@ -54,6 +61,10 @@ class RakutenRms
         $this->replaceApi = $this->config['replace_api'];
         $this->serviceSecret = $this->config['service_secret'];
         $this->licenseKey = $this->config['license_key'];
+        $this->settlementUserName = $this->config['settlement_user_name'];
+        $this->settlementShopUrl = $this->config['settlement_shop_url'];
+        $this->settlementAuth = $this->config['settlement_auth'];
+        $this->testMailAddress = $this->config['test_mail_address'];
         $this->logFile = $this->config['log_file'];
         $this->proxy = $this->config['proxy'];
         $this->curloptProxy = $this->config['curlopt_proxy'];
@@ -61,6 +72,7 @@ class RakutenRms
         $this->curloptProxyUserpwd = $this->config['curlopt_proxy_userpwd'];
         $this->replaceUrls = $this->config['replace_urls'];
         $this->orderDebug = $this->config['order_debug'];
+        $this->soapUrl = $this->config['soap_url'];
     }
 
     /**
@@ -72,6 +84,10 @@ class RakutenRms
         if(isset($config['replace_api'])) $this->replaceApi = $config['replace_api'];
         if(isset($config['service_secret'])) $this->serviceSecret = $config['service_secret'];
         if(isset($config['license_key'])) $this->licenseKey = $config['license_key'];
+        if(isset($config['settlement_user_name'])) $this->settlementUserName = $config['settlement_user_name'];
+        if(isset($config['settlement_shop_url'])) $this->settlementShopUrl = $config['settlement_shop_url'];
+        if(isset($config['settlement_auth'])) $this->settlementAuth = $config['settlement_auth'];
+        if(isset($config['test_mail_address'])) $this->testMailAddress = $config['test_mail_address'];
         if(isset($config['log_file'])) $this->logFile = $config['log_file'];
         if(isset($config['proxy'])) $this->proxy = $config['proxy'];
         if(isset($config['curlopt_proxy'])) $this->curloptProxy = $config['curlopt_proxy'];
@@ -79,6 +95,7 @@ class RakutenRms
         if(isset($config['curlopt_proxy_userpwd'])) $this->curloptProxyUserpwd = $config['curlopt_proxy_userpwd'];
         if(isset($config['replace_urls'])) $this->replaceUrls = $config['replace_urls'];
         if(isset($config['order_debug'])) $this->orderDebug = $config['order_debug'];
+        if(isset($config['soap_url'])) $this->soapUrl = $config['soap_url'];
     }
 
     public function getReplaceUrl($url)
@@ -112,6 +129,11 @@ class RakutenRms
         $xml = simplexml_load_string($xmlStr);
         $jsonStr = json_encode($xml);
         return json_decode($jsonStr, true);
+    }
+
+    function object2array($object) {
+        $json = json_encode($object);
+        return json_decode($json, true);
     }
 
     public function arr2xml($arr)

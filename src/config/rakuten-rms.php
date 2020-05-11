@@ -10,6 +10,7 @@
 return [
     'order_debug' => env('ORDER_DEBUG', false),
     'replace_api' => env('REPLACE_API', ''),
+    'soap_url' => env('SOAP_URL', ''),
     'service_secret' => env('RMS_SERVICE_SECRET', ''),
     'license_key' => env('RMS_LICENSE_KEY', ''),
 
