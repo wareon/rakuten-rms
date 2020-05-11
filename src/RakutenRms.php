@@ -63,6 +63,24 @@ class RakutenRms
         $this->orderDebug = $this->config['order_debug'];
     }
 
+    /**
+     * Dynamic switch configuration
+     * @param $config
+     */
+    public function changeConfig($config)
+    {
+        if(isset($config['replace_api'])) $this->replaceApi = $config['replace_api'];
+        if(isset($config['service_secret'])) $this->serviceSecret = $config['service_secret'];
+        if(isset($config['license_key'])) $this->licenseKey = $config['license_key'];
+        if(isset($config['log_file'])) $this->logFile = $config['log_file'];
+        if(isset($config['proxy'])) $this->proxy = $config['proxy'];
+        if(isset($config['curlopt_proxy'])) $this->curloptProxy = $config['curlopt_proxy'];
+        if(isset($config['curlopt_proxy_port'])) $this->curloptProxyPort = $config['curlopt_proxy_port'];
+        if(isset($config['curlopt_proxy_userpwd'])) $this->curloptProxyUserpwd = $config['curlopt_proxy_userpwd'];
+        if(isset($config['replace_urls'])) $this->replaceUrls = $config['replace_urls'];
+        if(isset($config['order_debug'])) $this->orderDebug = $config['order_debug'];
+    }
+
     public function getReplaceUrl($url)
     {
         $query['uri'] = '';

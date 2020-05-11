@@ -11,6 +11,8 @@ namespace Wareon\RakutenRms\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
+ * @method static changeConfig(array $config)
+ * 
  * @method static categroiesGet()
  * @method static categroyGet()
  * @method static categoryInsert($data)
