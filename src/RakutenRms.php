@@ -81,21 +81,21 @@ class RakutenRms
      */
     public function changeConfig($config)
     {
-        if(isset($config['replace_api'])) $this->replaceApi = $config['replace_api'];
-        if(isset($config['service_secret'])) $this->serviceSecret = $config['service_secret'];
-        if(isset($config['license_key'])) $this->licenseKey = $config['license_key'];
-        if(isset($config['settlement_user_name'])) $this->settlementUserName = $config['settlement_user_name'];
-        if(isset($config['settlement_shop_url'])) $this->settlementShopUrl = $config['settlement_shop_url'];
-        if(isset($config['settlement_auth'])) $this->settlementAuth = $config['settlement_auth'];
-        if(isset($config['test_mail_address'])) $this->testMailAddress = $config['test_mail_address'];
-        if(isset($config['log_file'])) $this->logFile = $config['log_file'];
-        if(isset($config['proxy'])) $this->proxy = $config['proxy'];
-        if(isset($config['curlopt_proxy'])) $this->curloptProxy = $config['curlopt_proxy'];
-        if(isset($config['curlopt_proxy_port'])) $this->curloptProxyPort = $config['curlopt_proxy_port'];
-        if(isset($config['curlopt_proxy_userpwd'])) $this->curloptProxyUserpwd = $config['curlopt_proxy_userpwd'];
-        if(isset($config['replace_urls'])) $this->replaceUrls = $config['replace_urls'];
-        if(isset($config['order_debug'])) $this->orderDebug = $config['order_debug'];
-        if(isset($config['soap_url'])) $this->soapUrl = $config['soap_url'];
+        if (isset($config['replace_api'])) $this->replaceApi = $config['replace_api'];
+        if (isset($config['service_secret'])) $this->serviceSecret = $config['service_secret'];
+        if (isset($config['license_key'])) $this->licenseKey = $config['license_key'];
+        if (isset($config['settlement_user_name'])) $this->settlementUserName = $config['settlement_user_name'];
+        if (isset($config['settlement_shop_url'])) $this->settlementShopUrl = $config['settlement_shop_url'];
+        if (isset($config['settlement_auth'])) $this->settlementAuth = $config['settlement_auth'];
+        if (isset($config['test_mail_address'])) $this->testMailAddress = $config['test_mail_address'];
+        if (isset($config['log_file'])) $this->logFile = $config['log_file'];
+        if (isset($config['proxy'])) $this->proxy = $config['proxy'];
+        if (isset($config['curlopt_proxy'])) $this->curloptProxy = $config['curlopt_proxy'];
+        if (isset($config['curlopt_proxy_port'])) $this->curloptProxyPort = $config['curlopt_proxy_port'];
+        if (isset($config['curlopt_proxy_userpwd'])) $this->curloptProxyUserpwd = $config['curlopt_proxy_userpwd'];
+        if (isset($config['replace_urls'])) $this->replaceUrls = $config['replace_urls'];
+        if (isset($config['order_debug'])) $this->orderDebug = $config['order_debug'];
+        if (isset($config['soap_url'])) $this->soapUrl = $config['soap_url'];
     }
 
     public function getReplaceUrl($url)
@@ -131,7 +131,8 @@ class RakutenRms
         return json_decode($jsonStr, true);
     }
 
-    function object2array($object) {
+    function object2array($object)
+    {
         $json = json_encode($object);
         return json_decode($json, true);
     }
@@ -204,7 +205,7 @@ class RakutenRms
         return $data;
     }
 
-    private function jsonCurl($url,$params, $isPost = true)
+    private function jsonCurl($url, $params, $isPost = true)
     {
         $url = $this->dealUrl($url);
         $ret = $this->curl($url, $isPost, $params, ApiDefine::REQUEST_JSON);
@@ -238,6 +239,7 @@ class RakutenRms
 
         $headerArray[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36";
         $headerArray[] = 'Authorization: ' . $this->authHeader();
+        $headerArray[] = 'Accept-encoding: gzip, deflate, identity';
         $ch = curl_init();
         if ($post === false) {
             if (!empty($params)) {
@@ -259,27 +261,40 @@ class RakutenRms
         }
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, $post);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_FAILONERROR, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headerArray);
+        curl_setopt($ch, CURLOPT_ENCODING, '');
 
         if ($this->proxy) {
             curl_setopt($ch, CURLOPT_PROXY, $this->curloptProxy);
             curl_setopt($ch, CURLOPT_PROXYPORT, $this->curloptProxyPort);
             curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->curloptProxyUserpwd);
         }
-
         $output = curl_exec($ch);
+        $error = curl_error($ch);
+
+        if (!empty($this->logFile)) {
+            $date = '[' . date('Y-m-d H:i:s') . "]: \n";
+            $br = "\n\n";
+            $log = '';
+            if (!empty($error)) $log .= $error . $br;
+            if ($errno = curl_errno($ch)) {
+                $error_message = curl_strerror($errno);
+                $log .= "cURL error ({$errno}): {$error_message}" . $br;
+            }
+            $this->log($date . $log . $output . $br, $this->logFile);
+        }
         curl_close($ch);
-        if (!empty($this->logFile)) $this->log($output, $this->logFile);
         return $output;
     }
 
     public function log($output, $file = 'output.log')
     {
         try {
-            file_put_contents(storage_path($file), $output);
+            file_put_contents(storage_path($file), $output, FILE_APPEND);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

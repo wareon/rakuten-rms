@@ -33,16 +33,18 @@ class OrderTest extends TestCase
     public function testSearchOrder()
     {
         $startDate = date('Y-m-d') . 'T00:00:00+0900';
+        $startDate = '2020-04-10T00:00:00+0900';
         $endDate = date('Y-m-d') . 'T23:59:59+0900';
-        $params['orderProgressList'] = [200,300,400,500,600,700,800,900];
+        $endDate = '2020-05-12T23:59:59+0900';
+        //$params['orderProgressList'] = [100,200,300,400,500,600,700,800,900];
         $params['dateType'] = 1;
         $params['startDatetime'] = $startDate;
         $params['endDatetime'] = $endDate;
-        $params['PaginationRequestModel'] = [
+        /*$params['PaginationRequestModel'] = [
             'requestRecordsAmount' => 10,
             'requestPage' => 1,
         ];
-        //$params['settlementMethod'] = 1;
+        $params['settlementMethod'] = 1;*/
         $data = $this->api->searchOrder($params);
         print_r($data);
         $this->assertEquals(true, true);

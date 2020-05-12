@@ -36,10 +36,10 @@ trait Order
     {
         if(isset($ret['orderNumberList']) && count($ret['orderNumberList'])>0){
             $page = 1;
-            $limit = 10;
+            $limit = 30;
             if(isset($params['PaginationRequestModel'])){
                 $page = $params['PaginationRequestModel']['requestPage'] ?? 1;
-                $limit = $params['PaginationRequestModel']['requestRecordsAmount'] ?? 10;
+                $limit = $params['PaginationRequestModel']['requestRecordsAmount'] ?? 30;
             }
             $max = 145;
             $total = $max + 6;
