@@ -6,6 +6,7 @@
  * @date 2020/4/21 9:12
  * @since v1.0
  */
+
 namespace Wareon\RakutenRms\Func;
 
 use Wareon\RakutenRms\ApiDefine;
@@ -18,34 +19,68 @@ trait Inventory
     public function getInventory($params)
     {
         $datas['params'] = [
-            'externalUserAuthModel' => [
-                'authKey' => $this->authHeader(),
-                'shopUrl' => $this->settlementShopUrl,
-                'userName' => $this->settlementUserName
-            ],
+            'externalUserAuthModel' => $this->soapUserAuth(),
             'getRequestExternalModel' => $params
         ];
         $datas['method'] = 'getInventoryExternal';
-        $ret = $this->curl($this->soapUrl, true, json_encode($datas));
-        return json_decode($ret, true);
+        return $this->soapCurl($datas);
     }
 
     public function updateInventory($params)
     {
         $datas['params'] = [
-            'externalUserAuthModel' => [
-                'authKey' => $this->authHeader(),
-                'shopUrl' => $this->settlementShopUrl,
-                'userName' => $this->settlementUserName
-            ],
-            'updateRequestExternalModel' =>
-                [
-                    ['updateRequestExternalItem'=>$params]
-                ]
+            'externalUserAuthModel' => $this->soapUserAuth(),
+            'updateRequestExternalModel' => $params
         ];
         $datas['method'] = 'updateInventoryExternal';
-        $ret = $this->curl($this->soapUrl, true, json_encode($datas));
-        return json_decode($ret, true);
+        return $this->soapCurl($datas);
+    }
+
+    public function updateSingleInventory($params)
+    {
+        $datas['params'] = [
+            'externalUserAuthModel' => $this->soapUserAuth(),
+            'updateRequestExternalModel' => $params
+        ];
+        $datas['method'] = 'updateSingleInventoryExternal';
+        return $this->soapCurl($datas);
+    }
+
+    private function soapUserAuth()
+    {
+        return [
+            'authKey' => $this->authHeader(),
+            'shopUrl' => $this->settlementShopUrl,
+            'userName' => $this->settlementUserName
+        ];
+    }
+
+    private function soapCurl($datas)
+    {
+        if (empty($this->soapUrl)) {
+            return $this->soap($datas);
+        } else {
+            $ret = $this->curl($this->soapUrl, true, json_encode($datas));
+            return json_decode($ret, true);
+        }
+    }
+
+    private function soap($json)
+    {
+        $params = $json['params'] ?? [];
+        $method = $json['method'] ?? 'default';
+        try {
+            $client = new \SoapClient(__DIR__ . "/../wsdl/inventoryapi.wsdl", ['trace' => 1]);
+            $ret = $client->{$method}($params);
+            $json = json_encode($ret);
+            $json = json_decode($json, true);
+            return json_encode($json);
+        } catch (Exception $e) {
+            $error['errCode'] = 'soap-error';
+            $error['errMessage'] = $e->getMessage();
+            $ret['result'] = $error;
+            return json_encode($ret);
+        }
     }
 
 }

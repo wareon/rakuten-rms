@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static changeConfig(array $config)
- * 
+ *
  * @method static categroiesGet()
  * @method static categroyGet()
  * @method static categoryInsert($data)
@@ -48,6 +48,10 @@ use Illuminate\Support\Facades\Facade;
  * @method static updateOrderOrderer(array $params)
  * @method static updateOrderDelivery(array $params)
  * @method static getPayment(array $params)
+ *
+ * @method static getInventory(array $params)
+ * @method static updateInventory(array $params)
+ * @method static updateSingleInventory(array $params)
  */
 
 class RakutenRms extends Facade

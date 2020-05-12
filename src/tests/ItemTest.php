@@ -25,14 +25,14 @@ class ItemTest extends TestCase
 
     /**
      * test Get Item detail
-     * @group item1
+     * @group itemSearch
      * @author wareon <wareon@qq.com>
      * @date 2020/1/14 9:25
      * @since v1.0
      */
     public function testGetItem()
     {
-        $data = $this->api->getItem('a001004018');
+        $data = $this->api->getItem('test1');
         print_r($data);
         $this->assertEquals(true, true);
     }
@@ -50,13 +50,13 @@ class ItemTest extends TestCase
             //'itemName' => '送料無料',
             //'catchcopy' => '送料無料',
             //'catalogId' => '1',
-            'itemUrl' => '',
+            'itemUrl' => 'test1',
             //'genreId' => ''
         ];
         $data = $this->api->itemSearch($params);
         $items = $data['itemSearchResult']['items']['item'] ?? [];
         if(isset($data['itemSearchResult']['numFound'])) echo $data['itemSearchResult']['numFound'];
-        //print_r($data);
+        print_r($data);
         $this->assertEquals(true, true);
     }
 
