@@ -36,7 +36,7 @@ class OrderTest extends TestCase
         $startDate = '2020-04-10T00:00:00+0900';
         $endDate = date('Y-m-d') . 'T23:59:59+0900';
         $endDate = '2020-05-12T23:59:59+0900';
-        //$params['orderProgressList'] = [100,200,300,400,500,600,700,800,900];
+        $params['orderProgressList'] = [100,200,300,400,500,600,700,800,900];
         $params['dateType'] = 1;
         $params['startDatetime'] = $startDate;
         $params['endDatetime'] = $endDate;
@@ -58,7 +58,7 @@ class OrderTest extends TestCase
         $params['orderNumberList'] = ['x-x-x'];
         $params['version'] = 1;
         $data = $this->api->getOrder($params);
-        //print_r($data);
+        print_r($data);
         if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'], JSON_UNESCAPED_UNICODE);
         $this->assertEquals(true, true);
     }
