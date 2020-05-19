@@ -17,6 +17,7 @@ use Wareon\RakutenRms\Func\Navigation as FuncNavigation;
 use Wareon\RakutenRms\Func\Order as FuncOrder;
 use Wareon\RakutenRms\Func\InquiryManagement as FuncInquiryManagement;
 use Wareon\RakutenRms\Func\Inventory as FuncInventory;
+use Wareon\RakutenRms\Func\Shop as FuncShop;
 
 class RakutenRms
 {
@@ -27,6 +28,7 @@ class RakutenRms
     use FuncOrder;
     use FuncInquiryManagement;
     use FuncInventory;
+    use FuncShop;
 
     public $replaceApi = '';
 

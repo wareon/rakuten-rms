@@ -52,6 +52,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static getInventory(array $params)
  * @method static updateInventory(array $params)
  * @method static updateSingleInventory(array $params)
+ *
+ * @method static deliverySetInfo(array $params)
  */
 
 class RakutenRms extends Facade
