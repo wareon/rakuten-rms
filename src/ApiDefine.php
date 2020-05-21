@@ -88,7 +88,9 @@ class ApiDefine
     const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_DELIVERY = '/es/2.0/sample.order/updateOrderDelivery/';
     const RMS_API_RAKUTEN_PAY_SAMPLE_GET_PAYMENT = '/es/2.0/sample.order/getPayment/';
 
+    const RMS_API_SHOP_DELVDATE_MASTER = '/es/1.0/shop/delvdateMaster';
     const RMS_API_SHOP_DELIVERY_SET_INFO = '/es/1.0/shop/deliverySetInfo';
+    const RMS_API_SHOP_SORYOKBN = '/es/1.0/shop/soryoKbn';
 
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;

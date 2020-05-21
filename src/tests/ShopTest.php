@@ -23,6 +23,19 @@ class ShopTest extends TestCase
     }
 
     /**
+     * @group delvdateMaster
+     */
+    public function testDelvdateMaster()
+    {
+        //$params['id'] = 1;
+        $params['delvdateNumber'] = 1;
+        $params = [];
+        $data = $this->api->delvdateMaster($params);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    /**
      * @group deliverySetInfo
      * @author wareon <wareon@qq.com>
      * @date 2020/5/19 10:00
@@ -37,4 +50,16 @@ class ShopTest extends TestCase
         $this->assertEquals(true, true);
     }
 
+    /**
+     * @group soryoKbn
+     */
+    public function testSoryoKbn()
+    {
+        //$params['id'] = 1;
+        //$params['kbnId'] = 2;
+        $params = [];
+        $data = $this->api->soryoKbn($params);
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
 }
