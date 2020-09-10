@@ -88,6 +88,18 @@ class ApiDefine
     const RMS_API_RAKUTEN_PAY_SAMPLE_UPDATE_ORDER_DELIVERY = '/es/2.0/sample.order/updateOrderDelivery/';
     const RMS_API_RAKUTEN_PAY_SAMPLE_GET_PAYMENT = '/es/2.0/sample.order/getPayment/';
 
+    // cabinet
+    const RMS_API_RAKUTEN_CABINET_USAGE_GET = '/es/1.0/cabinet/usage/get';
+    const RMS_API_RAKUTEN_CABINET_FOLDERS_GET = '/es/1.0/cabinet/folders/get';
+    const RMS_API_RAKUTEN_CABINET_FOLDER_FILES_GET = '/es/1.0/cabinet/folder/files/get';
+    const RMS_API_RAKUTEN_CABINET_FILES_SEARCH = '/es/1.0/cabinet/files/search';
+    const RMS_API_RAKUTEN_CABINET_FILE_DELETE = '/es/1.0/cabinet/file/delete';
+    const RMS_API_RAKUTEN_CABINET_TRASHBOX_FILES_GET = '/es/1.0/cabinet/trashbox/files/get';
+    const RMS_API_RAKUTEN_CABINET_TRASHBOX_FILE_REVERT = '/es/1.0/cabinet/trashbox/file/revert';
+    const RMS_API_RAKUTEN_CABINET_FILE_INSERT = '/es/1.0/cabinet/file/insert';
+    const RMS_API_RAKUTEN_CABINET_FILE_UPDATE = '/es/1.0/cabinet/file/update';
+    const RMS_API_RAKUTEN_CABINET_FOLDER_INSERT = '/es/1.0/cabinet/folder/insert';
+
     const RMS_API_SHOP_DELVDATE_MASTER = '/es/1.0/shop/delvdateMaster';
     const RMS_API_SHOP_DELIVERY_SET_INFO = '/es/1.0/shop/deliverySetInfo';
     const RMS_API_SHOP_SORYOKBN = '/es/1.0/shop/soryoKbn';
@@ -110,6 +122,7 @@ class ApiDefine
     const REQUEST_FILE = 3;
     const REQUEST_ALL = 4;
     const REQUEST_SOAP = 5;
+    const REQUEST_XML_FILE = 6;
 }
 
 

@@ -30,7 +30,7 @@ class NavigationTest extends TestCase
      */
     public function testNavigationGenreGet()
     {
-        $useGenreIds = [101752,101765,101767,112779];
+        $useGenreIds = ['0000'];
         foreach ($useGenreIds as $useGenreId){
             $params['genreId'] = $useGenreId;
             $data = $this->api->navigationGenreGet($params);

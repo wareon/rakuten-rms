@@ -25,7 +25,7 @@ class ItemTest extends TestCase
 
     /**
      * test Get Item detail
-     * @group itemSearch
+     * @group getItem
      * @author wareon <wareon@qq.com>
      * @date 2020/1/14 9:25
      * @since v1.0
@@ -47,11 +47,11 @@ class ItemTest extends TestCase
     public function testItemSearch()
     {
         $params = [
-            //'itemName' => '送料無料',
-            //'catchcopy' => '送料無料',
-            //'catalogId' => '1',
-            'itemUrl' => 'test1',
-            //'genreId' => ''
+            'itemName' => '',
+            'catchcopy' => '',
+            'catalogId' => '',
+            'itemUrl' => '',
+            'genreId' => ''
         ];
         $data = $this->api->itemSearch($params);
         $items = $data['itemSearchResult']['items']['item'] ?? [];

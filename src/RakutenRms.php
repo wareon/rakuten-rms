@@ -10,6 +10,7 @@
 namespace Wareon\RakutenRms;
 
 use Illuminate\Config\Repository;
+use Wareon\RakutenRms\Func\Cabinet as FuncCabinet;
 use Wareon\RakutenRms\Func\Categroy as FuncCategroy;
 use Wareon\RakutenRms\Func\Item as FuncItem;
 use Wareon\RakutenRms\Func\Product as FuncProduct;
@@ -24,6 +25,7 @@ class RakutenRms
     use FuncItem;
     use FuncProduct;
     use FuncNavigation;
+    use FuncCabinet;
     use FuncCategroy;
     use FuncOrder;
     use FuncInquiryManagement;
@@ -111,7 +113,6 @@ class RakutenRms
                 break;
             }
         }
-
         $newUrl = $this->replaceApi . '?' . http_build_query($query);
         return $newUrl;
     }
@@ -120,7 +121,10 @@ class RakutenRms
     {
         $query['uri'] = urlencode($uri);
         if (!empty($this->replaceApi)) {
-            return $this->replaceApi . '?' . http_build_query($query);
+            if (strpos($this->replaceApi, '?') !== false)
+                $a = '&';
+            else $a = '?';
+            return $this->replaceApi . $a . http_build_query($query);
         } else {
             return ApiDefine::HOST . $uri;
         }
@@ -243,6 +247,7 @@ class RakutenRms
         $headerArray[] = 'Authorization: ' . $this->authHeader();
         $headerArray[] = 'Accept-encoding: gzip, deflate, identity';
         $ch = curl_init();
+        curl_setopt($ch, CURLOPT_POST, $post);
         if ($post === false) {
             if (!empty($params)) {
                 if (strpos($url, '?') === false) {
@@ -259,10 +264,11 @@ class RakutenRms
                 if (is_array($params)) $fields = http_build_query($params);
                 else if (is_string($params)) $fields = $params;
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+            } else if ($type == ApiDefine::REQUEST_XML_FILE && !empty($params)) {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
             }
         }
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, $post);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_FAILONERROR, false);
