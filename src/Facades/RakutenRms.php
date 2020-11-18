@@ -53,6 +53,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static updateInventory(array $params)
  * @method static updateSingleInventory(array $params)
  *
+ * @method static shopMaster()
  * @method static delvdateMaster(array $params)
  * @method static deliverySetInfo(array $params)
  * @method static soryoKbn(array $params)
