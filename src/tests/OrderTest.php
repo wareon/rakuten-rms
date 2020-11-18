@@ -55,7 +55,7 @@ class OrderTest extends TestCase
      */
     public function testGetOrder()
     {
-        $params['orderNumberList'] = ['x-x-x'];
+        $params['orderNumberList'] = ['381683-20200727-00001837'];
         $params['version'] = 1;
         $data = $this->api->getOrder($params);
         print_r($data);

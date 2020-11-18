@@ -100,6 +100,7 @@ class ApiDefine
     const RMS_API_RAKUTEN_CABINET_FILE_UPDATE = '/es/1.0/cabinet/file/update';
     const RMS_API_RAKUTEN_CABINET_FOLDER_INSERT = '/es/1.0/cabinet/folder/insert';
 
+    const RMS_API_SHOP_MASTER = '/es/1.0/shop/shopMaster';
     const RMS_API_SHOP_DELVDATE_MASTER = '/es/1.0/shop/delvdateMaster';
     const RMS_API_SHOP_DELIVERY_SET_INFO = '/es/1.0/shop/deliverySetInfo';
     const RMS_API_SHOP_SORYOKBN = '/es/1.0/shop/soryoKbn';

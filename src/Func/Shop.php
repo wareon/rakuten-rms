@@ -12,11 +12,16 @@ use Wareon\RakutenRms\ApiDefine;
 
 trait Shop
 {
+    public function shopMaster()
+    {
+        return $this->queryCurl(ApiDefine::RMS_API_SHOP_MASTER, []);
+    }
+
     public function delvdateMaster($params)
     {
         return $this->queryCurl(ApiDefine::RMS_API_SHOP_DELVDATE_MASTER, $params);
     }
-    
+
     public function deliverySetInfo($params)
     {
         return $this->queryCurl(ApiDefine::RMS_API_SHOP_DELIVERY_SET_INFO, $params);

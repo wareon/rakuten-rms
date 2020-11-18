@@ -23,6 +23,16 @@ class ShopTest extends TestCase
     }
 
     /**
+     * @group shopMaster
+     */
+    public function testShopMaster()
+    {
+        $data = $this->api->shopMaster();
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    /**
      * @group delvdateMaster
      */
     public function testDelvdateMaster()
