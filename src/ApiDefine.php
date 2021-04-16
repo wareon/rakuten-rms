@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ALL API URL define
  *
@@ -6,7 +7,9 @@
  * @date 2020/1/10 12:25
  * @since rakuten rms 1.0
  */
+
 namespace Wareon\RakutenRms;
+
 class ApiDefine
 {
     const HOST = 'https://api.rms.rakuten.co.jp';
@@ -105,6 +108,14 @@ class ApiDefine
     const RMS_API_SHOP_DELIVERY_SET_INFO = '/es/1.0/shop/deliverySetInfo';
     const RMS_API_SHOP_SORYOKBN = '/es/1.0/shop/soryoKbn';
 
+    // Coupon
+    const RMS_API_RAKUTEN_COUPON_ISSUE = '/es/1.0/coupon/issue';
+    const RMS_API_RAKUTEN_COUPON_UPDATE = '/es/1.0/coupon/update';
+    const RMS_API_RAKUTEN_COUPON_DELETE = '/es/1.0/coupon/delete';
+    const RMS_API_RAKUTEN_COUPON_GET = '/es/1.0/coupon/get';
+    const RMS_API_RAKUTEN_COUPON_SEARCH = '/es/1.0/coupon/search';
+    const RMS_API_RAKUTEN_THANKSCOUPON_BASE = '/es/1.0/thankscoupon';
+
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;
 
@@ -125,6 +136,3 @@ class ApiDefine
     const REQUEST_SOAP = 5;
     const REQUEST_XML_FILE = 6;
 }
-
-
-
