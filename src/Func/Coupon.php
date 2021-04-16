@@ -96,39 +96,39 @@ trait Coupon
     }
 
     // ThanksCoupon
-    // public function thanksCouponGetAll()
-    // {
-    //     return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, []);
-    // }
+    public function thanksCouponGetAll()
+    {
+        return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, []);
+    }
 
-    // public function thanksCouponGet(int $couponId)
-    // {
-    //     return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId", []);
-    // }
+    public function thanksCouponGet(int $couponId)
+    {
+        return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId", []);
+    }
 
-    // public function thanksCouponSearch(array $params)
-    // {
-    //     return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, $params);
-    // }
+    public function thanksCouponSearch(array $params)
+    {
+        return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, $params);
+    }
 
-    // public function thanksCouponInsert(array $body)
-    // {
-    //     $data = ['request' => [
-    //         'thanksCoupon' => $body
-    //     ]];
-    //     return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, $data);
-    // }
+    public function thanksCouponInsert(array $body)
+    {
+        $data = ['request' => [
+            'thanksCoupon' => $body
+        ]];
+        return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, $data);
+    }
 
-    // public function thanksCouponUpdate(int $couponId, array $body)
-    // {
-    //     $data = ['request' => [
-    //         'thanksCoupon' => $body
-    //     ]];
-    //     return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId", $data);
-    // }
+    public function thanksCouponUpdate(int $couponId, array $body)
+    {
+        $data = ['request' => [
+            'thanksCoupon' => $body
+        ]];
+        return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId", $data);
+    }
 
-    // public function thanksCouponStop(int $couponId)
-    // {
-    //     return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId/issuestatus/stop", []);
-    // }
+    public function thanksCouponStop(int $couponId)
+    {
+        return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId/issuestatus/stop", []);
+    }
 }
