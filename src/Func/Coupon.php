@@ -129,6 +129,6 @@ trait Coupon
 
     public function thanksCouponStop(int $couponId)
     {
-        return $this->xmlCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId/issuestatus/stop", []);
+        return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE . "/$couponId/issuestatus/stop", []);
     }
 }
