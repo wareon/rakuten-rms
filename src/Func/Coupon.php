@@ -96,10 +96,6 @@ trait Coupon
     }
 
     // ThanksCoupon
-    public function thanksCouponGetAll()
-    {
-        return $this->queryCurl(ApiDefine::RMS_API_RAKUTEN_THANKSCOUPON_BASE, []);
-    }
 
     public function thanksCouponGet(int $couponId)
     {
