@@ -155,10 +155,16 @@ class RakutenRms
         $xml = '';
         foreach ($arr as $key => $val) {
             if (!is_numeric($key)) {
-                if (is_array($val)) {
-                    $xml .= '<' . $key . '>' . $this->arrToXml($val) . '</' . $key . '>';
+                if(strpos($key, 'shopbiz:') !== false) {
+                    $key1 = $key . ' xmlns:shopbiz="http://rakuten.co.jp/rms/mall/shop/biz/api/model/resource"';
+                    $key2 = $key;
                 } else {
-                    $xml .= '<' . $key . '>' . htmlspecialchars($val) . '</' . $key . '>';
+                    $key1 = $key2 = $key;
+                }
+                if (is_array($val)) {
+                    $xml .= '<' . $key1 . '>' . $this->arrToXml($val) . '</' . $key2 . '>';
+                } else {
+                    $xml .= '<' . $key1 . '>' . htmlspecialchars($val) . '</' . $key2 . '>';
                 }
             } else {
                 if (is_array($val)) {
@@ -224,7 +230,7 @@ class RakutenRms
     {
         if ($type == ApiDefine::REQUEST_XML) {
             $headerArray = array(
-                "Content-type: text/xml; charset=utf-8",
+                "Content-type: application/xml; charset=utf-8",
                 "Accept: application/xml"
             );
         } else if ($type == ApiDefine::REQUEST_JSON) {
