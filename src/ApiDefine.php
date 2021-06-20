@@ -100,10 +100,24 @@ class ApiDefine
     const RMS_API_RAKUTEN_CABINET_FILE_UPDATE = '/es/1.0/cabinet/file/update';
     const RMS_API_RAKUTEN_CABINET_FOLDER_INSERT = '/es/1.0/cabinet/folder/insert';
 
+    const RMS_API_SHOP_TOPDISPLAY = '/es/1.0/shop/topDisplay';
+    const RMS_API_SHOP_SHOPLAYOUTIMAGE = '/es/1.0/shop/shopLayoutImage';
+    const RMS_API_SHOP_SHOPLAYOUTCOMMON = '/es/1.0/shop/shopLayoutCommon';
+    const RMS_API_SHOP_NAVIBUTTONINFO = '/es/1.0/shop/naviButtonInfo';
+    const RMS_API_SHOP_NAVIBUTTON = '/es/1.0/shop/naviButton';
+    const RMS_API_SHOP_LAYOUTTEXTSMALL = '/es/1.0/shop/layoutTextSmall';
+    const RMS_API_SHOP_LAYOUTLOSSLEADER = '/es/1.0/shop/layoutLossLeader';
+    const RMS_API_SHOP_LAYOUTITEMMAP = '/es/1.0/shop/layoutItemMap';
+    const RMS_API_SHOP_LAYOUTCATEGORYMAP = '/es/1.0/shop/layoutCategoryMap';
+    const RMS_API_SHOP_SHOPCALENDAR = '/es/1.0/shop/shopCalendar';
     const RMS_API_SHOP_MASTER = '/es/1.0/shop/shopMaster';
     const RMS_API_SHOP_DELVDATE_MASTER = '/es/1.0/shop/delvdateMaster';
     const RMS_API_SHOP_DELIVERY_SET_INFO = '/es/1.0/shop/deliverySetInfo';
     const RMS_API_SHOP_SORYOKBN = '/es/1.0/shop/soryoKbn';
+    const RMS_API_SHOP_SHOPAREASORYO = '/es/1.0/shop/shopAreaSoryo';
+    const RMS_API_SHOP_DELVAREAMASTER = '/es/1.0/shop/delvAreaMaster';
+    const RMS_API_SHOP_LAYOUTTEXTLARGE = '/es/1.0/shop/layoutTextLarge';
+    const RMS_API_SHOP_GOLDTOP = '/es/1.0/shop/goldTop';
 
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;
