@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RakutenRms Facade
  *
@@ -8,6 +9,7 @@
  */
 
 namespace Wareon\RakutenRms\Facades;
+
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -57,6 +59,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static delvdateMaster(array $params)
  * @method static deliverySetInfo(array $params)
  * @method static soryoKbn(array $params)
+ * 
+ * @method static getCoupon(string code)
  */
 
 class RakutenRms extends Facade

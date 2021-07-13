@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Rabuten Rms class
  *
@@ -19,6 +20,8 @@ use Wareon\RakutenRms\Func\Order as FuncOrder;
 use Wareon\RakutenRms\Func\InquiryManagement as FuncInquiryManagement;
 use Wareon\RakutenRms\Func\Inventory as FuncInventory;
 use Wareon\RakutenRms\Func\Shop as FuncShop;
+use Wareon\RakutenRms\Func\Coupon as FuncCoupon;
+
 
 class RakutenRms
 {
@@ -31,6 +34,7 @@ class RakutenRms
     use FuncInquiryManagement;
     use FuncInventory;
     use FuncShop;
+    use FuncCoupon;
 
     public $replaceApi = '';
 
@@ -41,7 +45,7 @@ class RakutenRms
     public $settlementAuth = "";
     public $testMailAddress = "";
 
-    public $logFile = '';//output log file
+    public $logFile = ''; //output log file
 
     public $proxy = false;
     public $curloptProxy = '';
