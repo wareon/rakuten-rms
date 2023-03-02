@@ -33,9 +33,9 @@ class OrderTest extends TestCase
     public function testSearchOrder()
     {
         $startDate = date('Y-m-d') . 'T00:00:00+0900';
-        $startDate = '2020-04-10T00:00:00+0900';
+        //$startDate = '2020-04-10T00:00:00+0900';
         $endDate = date('Y-m-d') . 'T23:59:59+0900';
-        $endDate = '2020-05-12T23:59:59+0900';
+        //$endDate = '2020-05-12T23:59:59+0900';
         $params['orderProgressList'] = [100,200,300,400,500,600,700,800,900];
         $params['dateType'] = 1;
         $params['startDatetime'] = $startDate;
@@ -55,8 +55,8 @@ class OrderTest extends TestCase
      */
     public function testGetOrder()
     {
-        $params['orderNumberList'] = ['381683-20200727-00001837'];
-        $params['version'] = 1;
+        $params['orderNumberList'] = ['414552-20230302-0029349811'];
+        $params['version'] = 7;
         $data = $this->api->getOrder($params);
         print_r($data);
         if(isset($data['OrderModelList'])) echo json_encode($data['OrderModelList'], JSON_UNESCAPED_UNICODE);

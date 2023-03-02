@@ -9,6 +9,8 @@
 namespace Wareon\RakutenRms;
 class ApiDefine
 {
+    const VER = '20230201';// Item API Update before Version
+
     const HOST = 'https://api.rms.rakuten.co.jp';
     // 楽天API エンドポイント関連
     const RMS_API_ITEM_SEARCH = '/es/1.0/item/search';
@@ -17,6 +19,14 @@ class ApiDefine
     const RMS_API_ITEM_DELETE = '/es/1.0/item/delete';
     const RMS_API_ITEM_GET = '/es/1.0/item/get';
     const RMS_API_ITEMS_UPDATE = '/es/1.0/items/update';
+
+    // ※SKU移行後店舗様向け
+    const RMS_API_ITEM_SEARCH2 = '/es/2.0/items/search';
+    const RMS_API_ITEM_INSERT2 = '/es/2.0/items/manage-numbers/';
+    const RMS_API_ITEM_UPDATE2 = '/es/2.0/items/manage-numbers/';
+    const RMS_API_ITEM_DELETE2 = '/es/2.0/items/manage-numbers/';
+    const RMS_API_ITEM_GET2 = '/es/2.0/items/manage-numbers/';
+    const RMS_API_ITEMS_UPDATE2 = '/es/2.0/items/manage-numbers/';
 
     const RMS_API_PRODUCT_SEARCH = '/es/2.0/product/search';
 

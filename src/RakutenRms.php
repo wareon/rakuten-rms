@@ -217,7 +217,16 @@ class RakutenRms
         return $data;
     }
 
-    private function jsonCurl($url, $params, $isPost = true)
+    private function jsonCustomerCurl($url, $params, $requestType = null)
+    {
+        $url = $this->dealUrl($url);
+        $ret = $this->curl($url, true, $params, ApiDefine::REQUEST_JSON, $requestType);
+        $msg = $this->strToUtf8($ret);
+        $data = json_decode($msg, true);
+        return $data;
+    }
+
+    private function jsonCurl($url, $params, $isPost = true, $requestType = null)
     {
         $url = $this->dealUrl($url);
         $ret = $this->curl($url, $isPost, $params, ApiDefine::REQUEST_JSON);
@@ -226,7 +235,7 @@ class RakutenRms
         return $data;
     }
 
-    public function curl($url, $post = false, $params = [], $type = ApiDefine::REQUEST_XML)
+    public function curl($url, $post = false, $params = [], $type = ApiDefine::REQUEST_XML, $requestType = null)
     {
         if ($type == ApiDefine::REQUEST_XML) {
             $headerArray = array(
@@ -253,7 +262,11 @@ class RakutenRms
         $headerArray[] = 'Authorization: ' . $this->authHeader();
         $headerArray[] = 'Accept-encoding: gzip, deflate, identity';
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_POST, $post);
+        if(empty($requestType)) {
+            curl_setopt($ch, CURLOPT_POST, $post);
+        } else {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $requestType);
+        }
         if ($post === false) {
             if (!empty($params)) {
                 if (strpos($url, '?') === false) {

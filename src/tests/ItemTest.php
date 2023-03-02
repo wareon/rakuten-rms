@@ -32,7 +32,9 @@ class ItemTest extends TestCase
      */
     public function testGetItem()
     {
-        $data = $this->api->getItem('test1');
+        $itemUrl = 'test2';
+        $ver = ApiDefine::VER;
+        $data = $this->api->getItem($itemUrl, $ver);
         print_r($data);
         $this->assertEquals(true, true);
     }
@@ -47,15 +49,29 @@ class ItemTest extends TestCase
     public function testItemSearch()
     {
         $params = [
-            'itemName' => '',
+            'itemType' => 'NORMAL',
+            //'title' => '2',
+            /*'itemName' => '',
             'catchcopy' => '',
             'catalogId' => '',
             'itemUrl' => '',
-            'genreId' => ''
+            'genreId' => ''*/
         ];
-        $data = $this->api->itemSearch($params);
+        $ver = ApiDefine::VER;
+        $data = $this->api->itemSearch($params, $ver);
         $items = $data['itemSearchResult']['items']['item'] ?? [];
         if(isset($data['itemSearchResult']['numFound'])) echo $data['itemSearchResult']['numFound'];
+        print_r($data);
+        $this->assertEquals(true, true);
+    }
+
+    public function testItemInsert2()
+    {
+        $json = '{"itemType":"NORMAL","itemNumber":"itemnumber","title":"通常商品の商品名","tagline":"pc and sp catchcopy","productDescription":{"pc":"explanation for PC","sp":"explanation for SP"},"salesDescription":"salesexplanation for PC","images":[{"type":"CABINET","location":"/01003752/dog_07.jpg","alt":"itemname"}],"whiteBgImage":{"type":"GOLD","location":"/vegetable-blue-jp.jpg"},"video":{"type":"HTML","parameters":{"value":"<scriptsrc=\"//stream.cms.rakuten.co.jp/gate/play/?w=320&h=286&mid=1101692986&vid=5792214557001\"type=\"text/javascript\"></script>"}},"genreId":"111111","tags":[7654321,9000000],"hideItem":false,"unlimitedInventoryFlag":false,"customizationOptions":[{"displayName":"ギフト包装","inputType":"SINGLE_SELECTION","required":true,"selections":[{"displayValue":"はい"}]}],"features":{"searchVisibility":"ALWAYS_VISIBLE","shopContact":true,"review":"SHOP_SETTING","displayManufacturerContents":false,"displayNormalCartButton":true,"displaySubscriptionCartButton":false,"inventoryDisplay":"HIDDEN_STOCK","lowStockThreshold":1},"payment":{"taxIncluded":false,"taxRate":"0.1","cashOnDeliveryFeeIncluded":true},"pointCampaign":{"applicablePeriod":{"start":"2018-04-28T07:59:49+09:00","end":"2018-05-28T07:59:49+09:00"},"benefits":{"pointRate":15},"optimization":{"maxPointRate":15}},"itemDisplaySequence":999999999,"layout":{"itemLayoutId":1,"navigationId":10,"layoutSequenceId":20,"smallDescriptionId":30,"largeDescriptionId":40,"showcaseId":50},"variants":{"normal-inventory":{"restockOnCancel":false,"normalDeliveryDateId":1,"backOrderFlag":false}}}';
+        $json = json_decode($json, true);
+        $json['manageNumber'] = 'pc0001';
+        $ver = date('Ymd');
+        $data = $this->api->itemInsert($json);
         print_r($data);
         $this->assertEquals(true, true);
     }
