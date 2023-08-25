@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ALL API URL define
  *
@@ -6,7 +7,9 @@
  * @date 2020/1/10 12:25
  * @since rakuten rms 1.0
  */
+
 namespace Wareon\RakutenRms;
+
 class ApiDefine
 {
     const VER = '20230201';// Item API Update before Version
@@ -129,6 +132,14 @@ class ApiDefine
     const RMS_API_SHOP_LAYOUTTEXTLARGE = '/es/1.0/shop/layoutTextLarge';
     const RMS_API_SHOP_GOLDTOP = '/es/1.0/shop/goldTop';
 
+    // Coupon
+    const RMS_API_RAKUTEN_COUPON_ISSUE = '/es/1.0/coupon/issue';
+    const RMS_API_RAKUTEN_COUPON_UPDATE = '/es/1.0/coupon/update';
+    const RMS_API_RAKUTEN_COUPON_DELETE = '/es/1.0/coupon/delete';
+    const RMS_API_RAKUTEN_COUPON_GET = '/es/1.0/coupon/get';
+    const RMS_API_RAKUTEN_COUPON_SEARCH = '/es/1.0/coupon/search';
+    const RMS_API_RAKUTEN_THANKSCOUPON_BASE = '/es/1.0/thankscoupon';
+
     // 商品登録(ItemAPI)設定関連
     const RMS_CATALOG_EXCEPTION_REASON_NO_JAN = 5;
 
@@ -149,6 +160,3 @@ class ApiDefine
     const REQUEST_SOAP = 5;
     const REQUEST_XML_FILE = 6;
 }
-
-
-
